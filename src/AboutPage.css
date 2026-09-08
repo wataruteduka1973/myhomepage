@@ -1,0 +1,18 @@
+.about-page .site-header [aria-current=page]{color:#064bed;border-bottom:2px solid currentColor}
+.about-intro h1{font-family:"Yu Mincho",serif;font-size:clamp(32px,4.5vw,58px);line-height:1.6;letter-spacing:.04em;font-weight:600}
+.about-profile{display:grid;grid-template-columns:240px 1fr;gap:64px;align-items:center;margin-top:48px}
+.about-profile .portrait-frame{grid-row:auto}
+.about-prose p+p{margin-top:24px}.about-prose{color:#344968;line-height:2.1}.about-name{font-size:23px;color:#102247}
+.about-process{background:#f3f7ff}.about-description{max-width:850px;margin-top:24px;line-height:2.1;color:#344968}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);list-style:none;padding:0;margin:40px 0 24px;gap:30px}
+.process-steps li{border-top:2px solid #b8cdfb;padding-top:18px;position:relative}.process-steps li:not(:last-child):after{content:"→";position:absolute;right:-23px;top:48px;color:#1757e9}
+.step-number{font-size:14px;color:#1757e9}.process-steps h3{font-size:24px;margin:8px 0}.process-steps p{font-size:15px;color:#445875}
+.process-return{font-size:15px;color:#1757e9;border-bottom:1px solid #d2def3;padding-bottom:25px}
+.development-label{display:inline-block;background:#edf3ff;color:#164be0;font-size:14px;padding:4px 14px;border-radius:30px;margin-bottom:15px}
+.project-figure{margin:36px 0 0}.project-preview{padding:0;border:1px solid #dce4ef;border-radius:14px;overflow:hidden;position:relative;display:block;width:100%;background:#f4f6f9;cursor:zoom-in;box-shadow:0 12px 35px #152e5410}
+.project-preview img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;object-position:top;transition:filter .25s}
+.project-preview:hover img{filter:brightness(.95)}.project-preview span{position:absolute;bottom:18px;right:18px;background:#fff;color:#174bb0;font:600 14px/1.5 Arial,sans-serif;padding:12px 18px;border-radius:30px;box-shadow:0 3px 20px #0002}
+.project-preview:focus-visible,.project-dialog button:focus-visible{outline:3px solid #2360f0;outline-offset:5px}
+.project-figure figcaption{font-size:13px;color:#667997;margin-top:14px}
+.project-dialog{width:min(1000px,94vw);max-height:90dvh;padding:0;border:0;border-radius:12px;box-shadow:0 20px 80px #0005;color:#102247}.project-dialog::backdrop{background:#0b1b39ba}.dialog-heading{position:sticky;top:0;background:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #e0e6ef}.dialog-heading h2{font-size:16px}.dialog-heading button{font:inherit;font-size:14px;padding:8px 15px;border:1px solid #c5d3e8;border-radius:24px;background:white;cursor:pointer}.project-dialog>img{display:block;width:100%;height:auto}
+@media(max-width:760px){.about-profile{grid-template-columns:1fr;gap:28px;margin-top:30px}.about-profile .portrait-frame{width:160px;margin:auto}.about-name{text-align:center}.process-steps{grid-template-columns:1fr;gap:26px}.process-steps li:not(:last-child):after{content:none}.project-preview img{max-height:280px}.dialog-heading{padding:12px}.dialog-heading h2{font-size:14px}.about-description{font-size:15px}.project-preview span{font-size:12px;bottom:12px;right:12px}}
