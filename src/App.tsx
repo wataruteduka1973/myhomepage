@@ -1,6 +1,6 @@
 import ContactPage from './ContactPage'
 import { SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 import './Enhancements.css'
@@ -26,7 +26,6 @@ function ActivityIcon({ number }: { number: string }) {
 
 function Home() {
   const root = useRef<HTMLDivElement>(null)
-  const [paused, setPaused] = useState(false)
   useEffect(() => {
     if (!root.current || !('IntersectionObserver' in window)) return
     const observer = new IntersectionObserver((entries) => {
@@ -47,7 +46,7 @@ function Home() {
       elements.forEach((element) => element.classList.remove('reveal'))
     }
   }, [])
-  return <div ref={root} className={paused ? 'home motion-paused' : 'home'}>
+  return <div ref={root} className="home">
     <a className="skip-link" href="#main">本文へ移動</a>
     <SiteHeader />
     <main id="main">
@@ -59,7 +58,7 @@ function Home() {
           <div className="hero-actions"><a className="button" href="/contact">お問い合わせ <span aria-hidden="true">↗</span></a><Link className="sub-link" to="/about">プロフィールを見る <span aria-hidden="true">→</span></Link></div>
         </div>
         <HeroArt />
-        <button className="motion-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? '動きを再開' : '動きを一時停止'}</button>
+
       </section>
       <section className="profile section" id="profile">
         <p className="eyebrow">PROFILE</p>

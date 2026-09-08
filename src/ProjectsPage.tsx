@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { HeroArt, SiteFooter, SiteHeader } from './SiteChrome'
 import './ProjectsPage.css'
@@ -16,7 +16,6 @@ const experiences = [
 ]
 
 export default function ProjectsPage() {
-  const [paused, setPaused] = useState(false)
   const { hash } = useLocation()
   useEffect(() => {
     const previous = document.title
@@ -28,10 +27,10 @@ export default function ProjectsPage() {
     if (target) document.getElementById(target.id)?.scrollIntoView({ behavior: 'instant', block: 'start' })
     else window.scrollTo({ top: 0, behavior: 'instant' })
   }, [hash])
-  return <div className={paused ? 'projects-page motion-paused' : 'projects-page'}>
+  return <div className="projects-page">
     <a className="skip-link" href="#projects-main">本文へ移動</a><SiteHeader />
     <main id="projects-main">
-      <section className="hero projects-hero"><HeroArt /><div className="hero-content"><p className="eyebrow">PROJECTS / 制作・取り組み</p><h1>仕事の「こうなったらいい」を、<br />かたちに。</h1><p className="projects-lead">新しい仕組みづくりから、今あるアプリの改善、日々の業務の自動化まで。<br />使う人の困りごとに向き合い、仕事が進めやすくなる仕組みをつくっています。</p></div><button className="motion-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? '動きを再開' : '動きを一時停止'}</button></section>
+      <section className="hero projects-hero"><HeroArt /><div className="hero-content"><p className="eyebrow">PROJECTS / 制作・取り組み</p><h1>仕事の「こうなったらいい」を、<br />かたちに。</h1><p className="projects-lead">新しい仕組みづくりから、今あるアプリの改善、日々の業務の自動化まで。<br />使う人の困りごとに向き合い、仕事が進めやすくなる仕組みをつくっています。</p></div></section>
       <section className="section"><p className="eyebrow">EXPERIENCE</p><h2>私の経歴</h2><div className="experience-grid">{experiences.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div></section>
       <section className="section services-section"><p className="eyebrow">HOW I CAN HELP</p><h2>ご相談いただけること</h2>
         <nav className="service-navigation" aria-label="相談内容から探す">{services.map(service => <a key={service.id} href={'#' + service.id}>{service.title} ↓</a>)}</nav>

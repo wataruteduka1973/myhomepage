@@ -18,31 +18,23 @@ function ContactForm({ category }: { category: string }) {
   const initial = template ? [...template.prompts, '希望時期・ご予算（未定でも構いません）', 'その他お伝えしたいこと'].map(prompt => '【' + prompt + '】\n\n').join('\n') : ''
   const [message, setMessage] = useState(initial)
   const [status, setStatus] = useState('')
-  const [sending, setSending] = useState(false)
-  const [sent, setSent] = useState(false)
-  async function submit(event: FormEvent<HTMLFormElement>) {
+  const [mailReady, setMailReady] = useState(false)
+  const body = 'お名前: ' + name.trim() + '\nメールアドレス: ' + email.trim() + '\n\n' + message.trim()
+  function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (sending || sent) return
     if (!name.trim() || !subject.trim() || !message.trim() || message.trim() === initial.trim()) {
-      setStatus('お名前・件名・お問い合わせ内容をご記入ください。テンプレートには、ご相談の内容を追記してください。')
+      setStatus('お名前・件名・お問い合わせ内容をご記入ください。テンプレートにご相談を追記してください。')
       return
     }
-    setSending(true)
-    setStatus('')
+    setMailReady(true)
+    setStatus('メールアプリで内容を確認し、送信してください。サイトからはまだ送信されていません。')
+    window.location.href = 'mailto:agtmpwd992@gmail.com?subject=' + encodeURIComponent(subject.trim()) + '&body=' + encodeURIComponent(body)
+  }
+  async function copyMessage() {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), subject: subject.trim(), message: message.trim() }),
-        signal: AbortSignal.timeout(20000),
-      })
-      if (!response.ok) throw new Error('send failed')
-      const result = await response.json()
-      if (result.ok !== true) throw new Error('invalid response')
-      setSent(true)
-      setStatus('お問い合わせを受け付けました。内容を確認のうえ、ご記入のメールアドレスへ返信します。')
-    } catch {
-      setStatus('送信を確認できませんでした。入力内容は残っています。時間をおいて再度お試しください。')
-    } finally { setSending(false) }
+      await navigator.clipboard.writeText('宛先: agtmpwd992@gmail.com\n件名: ' + subject.trim() + '\n\n' + body)
+      setStatus('コピーしました。ご利用のメールサービスに貼り付けて送信してください。')
+    } catch { setStatus('コピーできませんでした。入力欄から内容をコピーし、agtmpwd992@gmail.comへ送信してください。') }
   }
   return <form className="contact-form" onSubmit={submit}>
     {template && <p className="template-notice">{template.title}の記入用テンプレートを用意しました。わかる範囲でご記入ください。見出しも自由に編集できます。</p>}
@@ -51,8 +43,8 @@ function ContactForm({ category }: { category: string }) {
     <label htmlFor="contact-subject">件名 <span>必須</span><input id="contact-subject" name="subject" required maxLength={150} value={subject} onChange={event => setSubject(event.target.value)} /></label>
     <label htmlFor="contact-message">お問い合わせ内容 <span>必須</span><textarea id="contact-message" name="message" rows={16} required maxLength={5000} aria-describedby="message-help" value={message} onChange={event => setMessage(event.target.value)} /></label>
     <p id="message-help">まだ決まっていない項目は「未定」で大丈夫です。パスワードなどの機密情報は記入しないでください。</p>
-    <p>ご入力いただいた情報は、お問い合わせへの対応と返信のために利用し、メール配送サービスResendを通じて送信します。</p>
-    <p role="status">{status}</p><button type="submit" className="button" disabled={sending || sent}>{sent ? '受付済み' : sending ? '送信中…' : 'お問い合わせを送信する →'}</button>
+    <p>メールアプリで内容を確認して送信してください。メールアプリが開かない場合や長文が反映されない場合は、内容をコピーしてご利用のメールサービスから送信できます。</p>
+    <p role="status">{status}</p><button type="submit" className="button">メールを作成する →</button>{mailReady && <button type="button" onClick={copyMessage}>メールの内容をコピーする</button>}
   </form>
 }
 export default function ContactPage() {

@@ -1,5 +1,5 @@
 import { SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import './AboutPage.css'
 
 const steps = [
@@ -19,7 +19,6 @@ function StepIcon({ index }: { index: number }) {
 }
 
 export default function AboutPage() {
-  const [paused, setPaused] = useState(false)
   const dialog = useRef<HTMLDialogElement>(null)
   useEffect(() => {
     const title = document.title
@@ -28,7 +27,7 @@ export default function AboutPage() {
     return () => { document.title = title }
   }, [])
 
-  return <div className={paused ? "about-page motion-paused" : "about-page"}>
+  return <div className="about-page">
     <a className="skip-link" href="#about-main">本文へ移動</a>
     <SiteHeader />
     <main id="about-main">
@@ -37,7 +36,7 @@ export default function AboutPage() {
         <div className="about-profile">
           <div className="about-prose"><p className="about-name">はじめまして、手塚航です。</p><p>繰り返しの作業に時間がかかる。使っている仕組みに不便がある。改善したいけれど、何から始めればよいかわからない。そんな仕事の困りごとを、アプリや仕組みの改善で解決することに取り組んでいます。</p><p>これまで、業務を支えるアプリづくり、不具合の調査・改善、日々の作業の自動化に携わってきました。大切にしているのは、今の使い方や周りへの影響まで理解し、安心して使い続けられるかたちに整えることです。</p></div>
         </div>
-        </div><button className="motion-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "動きを再開" : "動きを一時停止"}</button>
+        </div>
       </section>
       <section className="about-process"><div className="section">
         <p className="eyebrow">HOW I WORK</p><h2>つくり、確かめ、よりよくする。</h2>

@@ -1,35 +1,13 @@
-# Cloudflare Workersでの公開
+# Cloudflare運用
 
-React画面と /api/contact を1つのWorkerに配置。Pagesの設定は使用しない。
+- 公開先: https://myhomepage.agtmpwd992.workers.dev
+- GitHub: wataruteduka1973/myhomepage / main
+- デプロイコマンド: npx wrangler deploy
+- wrangler.jsonc の build.command に npm run build を指定。CloudflareのBuild commandがNoneでもdist生成を実行する。
+- 画面はStatic Assets。フォームはメールアプリでの作成方式で、Resend・送信API・送信制限バインディングは廃止。
+- 訪問者自身のメールアプリで送信する必要がある。メールが届いたことはサイトでは判定しない。
 
-## Git連携
-- GitHub: wataruteduka1973/myhomepage
-- ブランチ: main
-- ルート: /
-- ビルド: npm run build
-- デプロイ: npx wrangler deploy
-- Worker名: myhomepage
-
-CloudflareのWorkers & PagesからGitHubリポジトリを接続し、Workersプロジェクトとして作成する。
-wrangler.jsoncとworker.jsをGitHubへ反映してから接続する。
-
-## 送信設定
-WorkerのSettings > Variables and Secretsで以下を設定する。
-- RESEND_API_KEY: Secret。Resendの送信権限を持つキー。
-- CONTACT_FROM: Resendで認証済みの送信元メールアドレス。
-
-キーはGitやチャットへ記載しない。未設定時は問い合わせAPIが503を返す。
-送信先はagtmpwd992@gmail.comに固定。制限は同一IP・Cloudflare拠点ごとに60秒5回で、全体の費用上限ではない。
-
-## 検証
-- npm run build
-- npm run lint
-- node --test contact.test.js
-- npx wrangler deploy --dry-run
-- 公開後に /、/about、/projects、/contact の直接アクセスを確認。
-- 各相談テンプレート、フォーム失敗時、配送先Gmailへの到着・返信先を確認。
-
-2026-09-08: Cloudflareに手動公開済み。
-公開URL: https://myhomepage.agtmpwd992.workers.dev
-4ページのHTTP 200、ビルド・lint・送信模擬テスト・dry-runを確認。
-ブラウザ操作・Resend設定・実配送は未確認。GitHubからの自動デプロイ連携は未設定。
+## 確認
+npm run build / npm run lint / npx wrangler deploy --dry-run
+公開後は4ページ・フォームテンプレート・メール作成内容を確認する。
+過去の失敗ビルドは履歴に残る。新コミットの自動ビルド成否はCloudflareで確認する。
