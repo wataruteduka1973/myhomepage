@@ -7,7 +7,7 @@ export function SiteHeader() {
     <nav aria-label="メインナビゲーション">
       <Link to="/" aria-current={pathname === '/' ? 'page' : undefined}>ホーム</Link>
       <Link to="/about" aria-current={pathname === '/about' ? 'page' : undefined}>私について</Link>
-      <Link to="/projects" aria-current={pathname === '/projects' ? 'page' : undefined}>主な活動</Link><a href="/contact">お問い合わせ</a>
+      <Link to="/projects" aria-current={pathname === '/projects' ? 'page' : undefined}>主な活動</Link><Link to="/contact" aria-current={pathname === '/contact' ? 'page' : undefined}>お問い合わせ</Link>
     </nav>
   </header>
 }

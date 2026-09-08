@@ -56,5 +56,5 @@ export default function ContactPage() {
     window.scrollTo({ top: 0, behavior: 'instant' })
     return () => { document.title = previous }
   }, [])
-  return <><a className="skip-link" href="#contact-main">本文へ移動</a><SiteHeader /><main id="contact-main" className="section contact-page"><p className="eyebrow">CONTACT</p><h1>まずは、困っていることから。</h1><p className="contact-introduction">開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。<br />具体的な形が決まっていなくても、お気軽にお聞かせください。</p><ContactForm key={category} category={category} /></main><SiteFooter /></>
+  return <><a className="skip-link" href="#contact-main">本文へ移動</a><SiteHeader /><main id="contact-main" className="section contact-page"><p className="eyebrow">CONTACT</p><h1>まずは、困っていることから。</h1><p className="contact-introduction">開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。<br />具体的な形が決まっていなくても、お気軽にお聞かせください。</p><div className="contact-layout"><aside className="contact-guide"><p className="eyebrow">LET’S TALK</p><h2>まだ決まっていなくても<br />大丈夫です。</h2><p>「この作業が大変」「こんなことができたら」。まずは普段の言葉でお聞かせください。</p><ol><li>困っていることを書く</li><li>できたら嬉しいことを添える</li><li>メールアプリで確認して送信</li></ol><p className="contact-guide-note">時期や予算は未定でも構いません。入力内容からメールの下書きを作成します。</p></aside><ContactForm key={category} category={category} /></div></main><SiteFooter /></>
 }
