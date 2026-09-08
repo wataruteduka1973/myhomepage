@@ -8,7 +8,11 @@
 - Resendの利用と入力データの転送はユーザー承認済み。契約・課金・DNS変更は未実施。
 - 配送サービスの受付IDを確認した場合だけ成功表示。同一内容の再送を重複防止キーで抑止。
 
-## 公開前の設定と確認（未完了）
+## 公開方式の更新
+Cloudflare Workers + Static Assetsとして公開。worker.jsが本ファイルの送信処理を呼び出す。
+CONTACT_RATE_LIMITERはwrangler.jsoncで設定済み。最新の公開手順と状態はDEPLOYMENT.mdを参照。
+
+## 送信開始前の設定と確認（未完了）
 1. Resendアカウント・送信用ドメインを用意する。
 2. サーバー側Secretに RESEND_API_KEY を設定。VITE_変数やソースには含めない。
 3. CONTACT_FROM に認証した送信元を設定する。
