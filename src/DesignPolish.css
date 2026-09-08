@@ -1,0 +1,62 @@
+:root{--ink:#142b4b;--muted:#48607c;--line:#dce5ef;--radius:20px}
+.service-theme-0{--accent:#245ad0;--tint:#edf3ff}
+.service-theme-1{--accent:#08796e;--tint:#eaf7f3}
+.service-theme-2{--accent:#7046ae;--tint:#f3eefb}
+.service-theme-3{--accent:#a05a12;--tint:#fff5e8}
+.section p{line-height:1.95}
+.experience-intro{max-width:780px;margin:24px 0;color:var(--muted);font-size:17px}
+.experience-grid article{position:relative;border-radius:var(--radius);border:1px solid var(--line);border-top:3px solid #739ce9;background:linear-gradient(145deg,#f3f7ff,white);padding:30px}
+.experience-grid article::before{content:"";display:block;width:10px;height:10px;background:#245ad0;border:5px solid #e4edff;box-sizing:content-box;border-radius:50%;margin-bottom:20px}
+.home .activity-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+.home .activity{border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;align-items:flex-start;background:#fff}
+.home .activity:hover,.home .activity:focus-visible{background:var(--tint);border-color:var(--accent)}
+.home .activity .activity-icon{background:var(--tint);color:var(--accent)}
+.home .activity-link::after{color:var(--accent)}
+.service-emblem{display:grid;place-items:center;width:62px;height:62px;border-radius:18px;background:var(--tint);color:var(--accent);margin-bottom:20px}
+.service-emblem svg{width:34px;height:34px}
+.service-number,.service-consult{color:var(--accent)}
+.service-detail{padding-block:52px}
+.service-visual{margin:0 0 28px;padding:26px;background:var(--tint);border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden}
+.service-visual figcaption{font-size:12px;letter-spacing:.12em;color:var(--muted);margin-bottom:18px}
+.visual-before{color:var(--muted);font-size:14px;border-bottom:1px dashed #aebdd0;padding-bottom:14px}
+.visual-arrow{display:block;color:var(--accent);margin:10px 0}
+.visual-result{display:flex;align-items:center;gap:16px;color:var(--ink)}
+.visual-result .service-emblem{background:white;margin:0;flex-shrink:0}
+.visual-result strong{font-size:20px}
+.visual-steps{display:flex;list-style:none;gap:10px;padding:0;margin:24px 0 0}
+.visual-steps li{flex:1;border-radius:10px;background:#ffffffd9;border:1px solid var(--line);padding:10px 6px;text-align:center;font-size:12px;color:var(--accent)}
+.service-detail:hover .visual-result svg{animation:icon-arrive .65s ease both}
+.service-theme-1:hover .visual-result svg{animation:inspect .8s ease both}
+.service-theme-2:hover .visual-result svg{animation:verify .65s ease both}
+.service-theme-3:hover .visual-result svg{animation:flow .65s ease both}
+.service-detail:hover .visual-steps li{animation:step-light .9s ease both}
+.service-detail:hover .visual-steps li:nth-child(2){animation-delay:.12s}
+.service-detail:hover .visual-steps li:nth-child(3){animation-delay:.24s}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+.role-grid article{padding:28px;border-radius:var(--radius);border:1px solid var(--line)}
+.ai-role{background:#edf3ff;color:#204fa9}.human-role{background:#eaf7f3;color:#176b60}
+.role-grid span{font-size:12px;letter-spacing:.12em;font-weight:700}
+.role-grid h3{font-size:21px;margin:14px 0}.role-grid p{margin:0;color:var(--muted)}
+.process-steps li{transition:transform .25s,box-shadow .25s}
+.process-steps li:hover{transform:translateY(-5px);box-shadow:0 12px 28px #142b4b0d}
+.project-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:32px 0}
+.project-guide article{border-top:1px solid var(--line);padding-top:20px}
+.project-guide span{font-size:13px;color:#245ad0}.project-guide h3{margin:10px 0;font-size:19px}
+.project-guide p{font-size:14px;color:var(--muted)}
+.contact-page.section{max-width:1200px}
+.contact-layout{display:grid;grid-template-columns:minmax(240px,.75fr) minmax(0,1.5fr);gap:48px;align-items:start}
+.contact-guide{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#edf3ff,#f8fafc)}
+.contact-guide h2{font-size:24px;line-height:1.6;margin-bottom:20px}
+.contact-guide p{color:var(--muted);font-size:14px}.contact-guide ol{padding-left:22px;margin:24px 0}
+.contact-guide li{padding:8px 0;font-size:14px}.contact-guide-note{border-top:1px solid var(--line);padding-top:20px}
+.contact-form>button:not(.button){justify-self:start;background:white;border:1px solid #b9c8de;color:var(--ink);border-radius:10px;padding:12px 18px;font:inherit;cursor:pointer}
+.connection{border-radius:var(--radius)}
+.hero .orbit,.hero .hero-glow,.hero .light-dot{animation-duration:4s;animation-delay:0s;animation-iteration-count:1;animation-fill-mode:forwards}
+@keyframes icon-arrive{0%{transform:scale(.85)}60%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes inspect{35%{transform:translate(4px,-3px)}70%{transform:translate(-3px,2px)}100%{transform:translate(0)}}
+@keyframes verify{50%{transform:scale(1.16);filter:drop-shadow(0 0 5px #7046ae55)}100%{transform:scale(1)}}
+@keyframes flow{40%{transform:translateX(5px)}75%{transform:translateX(-3px)}100%{transform:translateX(0)}}
+@keyframes step-light{50%{background:var(--accent);color:white;transform:translateY(-3px)}}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr;gap:30px}.home .activity-list{grid-template-columns:1fr}.contact-guide{padding:24px}}
+@media(max-width:600px){.role-grid,.project-guide{grid-template-columns:1fr}.home .activity{padding:22px 18px}.service-visual{padding:20px}.visual-result strong{font-size:18px}.visual-steps{gap:6px}.visual-steps li{font-size:11px}.experience-grid article{padding:24px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
