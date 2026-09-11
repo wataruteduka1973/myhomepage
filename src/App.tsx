@@ -1,4 +1,5 @@
 import { ServiceIcon } from './ServiceVisual'
+import { SocialCard } from './SiteChrome'
 import ContactPage from './ContactPage'
 import { SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
 import { useEffect, useRef } from 'react'
@@ -46,7 +47,7 @@ function Home() {
       <section className="hero" id="top">
         <div className="hero-content">
           <p className="eyebrow">AI ENGINEER</p>
-          <h1><span>AIエンジニアと</span><span>だからできる</span><span>品質と感動を</span></h1>
+          <h1><span>AIエンジニア</span><span>だからできる</span><span>品質と感動を</span></h1>
           <p className="lead">アイデアをかたちに。<br />安心して使える仕組みを、一緒につくる。</p>
           <div className="hero-actions"><a className="button" href="/contact">お問い合わせ <span aria-hidden="true">↗</span></a><Link className="sub-link" to="/about">プロフィールを見る <span aria-hidden="true">→</span></Link></div>
         </div>
@@ -62,7 +63,7 @@ function Home() {
         <div className="activity-list">{activities.map(([number, title, body], index) => <Link className={"activity activity-link service-theme-" + index} key={number} to={'/projects#' + ['app-development', 'maintenance', 'quality', 'automation'][index]}><span className="activity-icon"><ServiceIcon index={index} /></span><div><h3>{title}</h3><p>{body}</p></div></Link>)}</div>
       </section>
       <section className="section connections" aria-label="発信とお問い合わせ">
-        <a className="connection note-card" href="https://note.com/just_eagle7298" target="_blank" rel="noopener noreferrer"><span className="eyebrow">JOURNAL</span><h2>考えや活動を、noteで。</h2><span className="connection-action">noteを読む <span aria-hidden="true">↗</span></span></a>
+        <SocialCard />
         <div className="connection contact-card" id="contact"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談・お仕事や採用のご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ <span aria-hidden="true">↗</span></a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div>
       </section>
     </main>

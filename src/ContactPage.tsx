@@ -19,7 +19,7 @@ function ContactForm({ category }: { category: string }) {
   const [message, setMessage] = useState(initial)
   const [status, setStatus] = useState('')
   const [mailReady, setMailReady] = useState(false)
-  const body = 'お名前: ' + name.trim() + '\nメールアドレス: ' + email.trim() + '\n\n' + message.trim()
+  const body = 'お名前: ' + name.trim() + '\nメールアドレス: ' + email.trim() + '\n\n' + message.trim() + '\n\nこのまま送信'
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     if (!name.trim() || !subject.trim() || !message.trim() || message.trim() === initial.trim()) {

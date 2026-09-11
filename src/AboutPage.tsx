@@ -1,4 +1,4 @@
-import { SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
+import { SocialCard, SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
 import { useEffect, useRef } from 'react'
 import './AboutPage.css'
 
@@ -49,7 +49,7 @@ export default function AboutPage() {
         <p className="about-description">商品の価格や売れ行きに関する情報を整理し、購入や出品を考える際の判断を支えるアプリケーションを開発しています。</p><p className="about-description">目指しているのは、情報を探して比較する負担を減らし、相場を理解しやすくすること。検索から分析までの流れを整えながら、使いやすさと品質の改善を進めています。</p>
         <div className="project-guide"><article><span>01</span><h3>情報を探す</h3><p>気になる商品の相場を検索。</p></article><article><span>02</span><h3>比べて理解する</h3><p>価格や売れ行きの情報を整理。</p></article><article><span>03</span><h3>判断に役立てる</h3><p>購入・出品を考える材料に。</p></article></div><figure className="project-figure"><button className="project-preview" type="button" onClick={() => dialog.current?.showModal()} aria-haspopup="dialog" aria-label="システマの画面全体を拡大して見る"><img src="/systema-preview.png" alt="システマの開発画面。相場検索、価格分析、ターゲット分析などのメニューが並ぶ。" width="1920" height="1992" loading="lazy" /><span>画面全体を見る ↗</span></button><figcaption>開発中の画面です。公開時には内容やデザインが変わる場合があります。</figcaption></figure>
       </section>
-      <section className="section connections" id="about-contact" aria-label="発信とお問い合わせ"><a className="connection note-card" href="https://note.com/just_eagle7298" target="_blank" rel="noopener noreferrer"><span className="eyebrow">JOURNAL</span><h2>考えや活動を、noteで。</h2><p>日々の気づきや取り組みは、noteでも発信しています。</p><span className="connection-action">noteを読む ↗</span></a><div className="connection contact-card"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ ↗</a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div></section>
+      <section className="section connections" id="about-contact" aria-label="発信とお問い合わせ"><SocialCard /><div className="connection contact-card"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ ↗</a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div></section>
     </main>
     <SiteFooter />
     <dialog ref={dialog} className="project-dialog" aria-labelledby="preview-title"><div className="dialog-heading"><h2 id="preview-title">システマ — 開発中の画面</h2><button type="button" onClick={() => dialog.current?.close()} autoFocus>閉じる ×</button></div><img src="/systema-preview.png" alt="システマの開発中の画面全体" width="1920" height="1992" /></dialog>

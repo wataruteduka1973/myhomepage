@@ -1,4 +1,5 @@
 import { ServiceIcon, ServiceVisual } from './ServiceVisual'
+import { SocialCard } from './SiteChrome'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { HeroArt, SiteFooter, SiteHeader } from './SiteChrome'
@@ -37,7 +38,7 @@ export default function ProjectsPage() {
         <nav className="service-navigation" aria-label="相談内容から探す">{services.map(service => <a key={service.id} href={'#' + service.id}>{service.title} ↓</a>)}</nav>
         {services.map((service, index) => <section className={"service-detail service-theme-" + index} id={service.id} key={service.id} aria-labelledby={service.id + '-title'}><div className="service-heading"><span className="service-emblem"><ServiceIcon index={index} /></span><span className="service-number">0{index + 1}</span><h3 id={service.id + '-title'}>{service.title}</h3></div><div className="service-body"><ServiceVisual index={index} /><p>{service.description}</p><ul>{service.examples.map(example => <li key={example}>{example}</li>)}</ul><a className="service-consult" href={'/contact?service=' + service.id}>{service.title}について相談する <span aria-hidden="true">↗</span></a></div></section>)}
       </section>
-      <section className="section connections" id="about-contact" aria-label="発信とお問い合わせ"><a className="connection note-card" href="https://note.com/just_eagle7298" target="_blank" rel="noopener noreferrer"><span className="eyebrow">JOURNAL</span><h2>考えや活動を、noteで。</h2><p>日々の気づきや取り組みは、noteでも発信しています。</p><span className="connection-action">noteを読む ↗</span></a><div className="connection contact-card"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ ↗</a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div></section>
+      <section className="section connections" id="about-contact" aria-label="発信とお問い合わせ"><SocialCard /><div className="connection contact-card"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ ↗</a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div></section>
     </main><SiteFooter />
   </div>
 }
