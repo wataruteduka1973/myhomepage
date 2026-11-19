@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { SiteHeader, SiteFooter } from './SiteChrome'
 import './ContactPage.css'
 
 const templates: Record<string, { title: string; prompts: string[] }> = {
-  'app-development': { title: '業務アプリの開発', prompts: ['つくりたいアプリ・実現したいこと', '使う方・利用する場面', '現在の作業と困っていること', '必要な機能・参考にしたいもの'] },
-  maintenance: { title: 'システムの改善・保守', prompts: ['改善したいアプリ・仕組み', '困っていること・発生している不具合', '問題が起こる場面や頻度', '改善後に実現したいこと'] },
+  'app-development': { title: '業務アプリ・ウェブアプリの開発', prompts: ['つくりたいアプリ・実現したいこと', '使う方・利用する場面', '現在の作業と困っていること', '必要な機能・参考にしたいもの'] },
+  maintenance: { title: '既存システムの改善・保守', prompts: ['改善したいアプリ・仕組み', '困っていること・発生している不具合', '問題が起こる場面や頻度', '改善後に実現したいこと'] },
   quality: { title: '品質確認の自動化', prompts: ['確認したいアプリ・仕組み', '現在行っている確認作業', '確認の頻度・負担になっていること', '自動化したい確認・心配なこと'] },
-  automation: { title: '日々の作業を効率化', prompts: ['効率化したい作業', '現在の作業の流れ・使っているもの', '作業の頻度・おおよその所要時間', '減らしたい負担・実現したいこと'] },
+  automation: { title: '日々の作業の自動化・データ整理', prompts: ['効率化したい作業', '現在の作業の流れ・使っているもの', '作業の頻度・おおよその所要時間', '減らしたい負担・実現したいこと'] },
+  'ai-rag': { title: 'AI活用（社内資料の検索・質問応答など）', prompts: ['AIで実現したいこと・困っていること', '対象にしたい資料や情報（種類・量のおおよそ）', '使う方・使う場面', '回答が間違っていた場合の影響（確認の方法など）'] },
 }
 function ContactForm({ category }: { category: string }) {
   const template = Object.hasOwn(templates, category) ? templates[category] : undefined
@@ -37,6 +38,7 @@ function ContactForm({ category }: { category: string }) {
     } catch { setStatus('コピーできませんでした。入力欄から内容をコピーし、agtmpwd992@gmail.comへ送信してください。') }
   }
   return <form className="contact-form" onSubmit={submit}>
+    <nav className="contact-chooser" aria-label="相談内容を選ぶ"><p>ご相談内容に近いものを選ぶと、記入用のテンプレートが入ります。</p><div>{Object.entries(templates).map(([id, t]) => <Link key={id} to={'/contact?service=' + id} aria-current={id === category ? 'true' : undefined}>{t.title}</Link>)}<Link to="/contact" aria-current={template ? undefined : 'true'}>その他・まだ決まっていない</Link></div></nav>
     {template && <p className="template-notice">{template.title}の記入用テンプレートを用意しました。わかる範囲でご記入ください。見出しも自由に編集できます。</p>}
     <div className="contact-fields"><label htmlFor="contact-name">お名前 <span>必須</span><input id="contact-name" name="name" autoComplete="name" required maxLength={100} value={name} onChange={event => setName(event.target.value)} /></label>
     <label htmlFor="contact-email">メールアドレス <span>必須</span><input id="contact-email" name="email" type="email" autoComplete="email" required maxLength={254} value={email} onChange={event => setEmail(event.target.value)} /></label></div>

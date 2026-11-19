@@ -3,6 +3,7 @@ const symbols = [
   <><circle cx="13" cy="13" r="8" /><path d="m19 19 9 9M9 13h8m-4-4v8" /></>,
   <><path d="m16 3 11 4v8c0 7-11 14-11 14S5 22 5 15V7Z" /><path d="m10 15 4 4 8-9" /></>,
   <><path d="M5 9h17l-4-4m4 4-4 4M27 23H10l4-4m-4 4 4 4" /><circle cx="5" cy="23" r="2" /><circle cx="27" cy="9" r="2" /></>,
+  <><path d="M5 6h22v15H14l-6 5v-5H5Z" /><path d="M11 12h10m-10 4h6" /></>,
 ]
 export function ServiceIcon({ index }: { index: number }) {
   return <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{symbols[index]}</svg>
@@ -12,6 +13,7 @@ const transformations = [
   ['使いづらさ・不具合', '安心して使い続ける', ['調査', '修正', '確認']],
   ['毎回の手作業で確認', '自動チェック＋人の確認', ['自動確認', '結果整理', '人が判断']],
   ['繰り返しに時間がかかる', '考える仕事に時間を', ['定型作業', '自動実行', '結果確認']],
+  ['資料を探す手間', '聞けば答えが返ってくる', ['資料を登録', 'AIが回答', '人が確認']],
 ] as const
 export function ServiceVisual({ index }: { index: number }) {
   const [before, after, steps] = transformations[index]

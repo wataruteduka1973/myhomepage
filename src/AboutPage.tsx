@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { SocialCard, SiteHeader, SiteFooter, HeroArt } from './SiteChrome'
 import { useEffect, useRef } from 'react'
 import './AboutPage.css'
@@ -48,6 +49,7 @@ export default function AboutPage() {
       <section className="section current-project" id="current"><p className="eyebrow">CURRENT PROJECT</p><span className="development-label">開発中</span><h2>市場分析ツール「システマ」</h2>
         <p className="about-description">商品の価格や売れ行きに関する情報を整理し、購入や出品を考える際の判断を支えるアプリケーションを開発しています。</p><p className="about-description">目指しているのは、情報を探して比較する負担を減らし、相場を理解しやすくすること。検索から分析までの流れを整えながら、使いやすさと品質の改善を進めています。</p>
         <div className="project-guide"><article><span>01</span><h3>情報を探す</h3><p>気になる商品の相場を検索。</p></article><article><span>02</span><h3>比べて理解する</h3><p>価格や売れ行きの情報を整理。</p></article><article><span>03</span><h3>判断に役立てる</h3><p>購入・出品を考える材料に。</p></article></div><figure className="project-figure"><button className="project-preview" type="button" onClick={() => dialog.current?.showModal()} aria-haspopup="dialog" aria-label="システマの画面全体を拡大して見る"><img src="/systema-preview.png" alt="システマの開発画面。相場検索、価格分析、ターゲット分析などのメニューが並ぶ。" width="1920" height="1992" loading="lazy" /><span>画面全体を見る ↗</span></button><figcaption>開発中の画面です。公開時には内容やデザインが変わる場合があります。</figcaption></figure>
+        <Link className="systema-detail-link" to="/works/systema">各機能を詳しく見る <span aria-hidden="true">→</span></Link>
       </section>
       <section className="section connections" id="about-contact" aria-label="発信とお問い合わせ"><SocialCard /><div className="connection contact-card"><span className="eyebrow">CONTACT</span><h2>ご相談は、ここから。</h2><p>開発のご相談や、お仕事・採用に関するご連絡をお待ちしています。</p><a className="connection-action" href="/contact">お問い合わせ ↗</a><a className="email" href="/contact">agtmpwd992@gmail.com</a></div></section>
     </main>
