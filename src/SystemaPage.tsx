@@ -85,7 +85,7 @@ export default function SystemaPage() {
     <a className="skip-link" href="#systema-main">本文へ移動</a><SiteHeader />
     <main id="systema-main">
       <section className="section systema-hero">
-        <Link className="systema-back" to="/about#current">← 私について</Link>
+        <Link className="systema-back" to="/">← ホーム</Link>
         <span className="development-label">開発中</span>
         <p className="eyebrow">CURRENT PROJECT / 機能紹介</p>
         <h1>市場分析ツール「システマ」</h1>
